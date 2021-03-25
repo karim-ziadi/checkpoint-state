@@ -1,25 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
+import Profile from "./component/profile";
+import MYimage from "./component/hk.jpg";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+    constructor() {
+        super();
+        this.state = {
+            Show: false,
+            fullName: "karim ziadi",
+            bio: "Js developper",
+        };
+        this.Show = () => this.setState({ Show: !this.state.Show });
+    }
+    render() {
+        return (
+            <div className="App">
+                <button className="btn" onClick={this.Show}>
+                    Toggle{" "}
+                </button>
+                {this.state.Show ? (
+                    <Profile
+                        fullName={this.state.fullName}
+                        bio={this.state.bio}
+                    >
+                        <img className="image" src={MYimage} alt="" />
+                    </Profile>
+                ) : null}
+            </div>
+        );
+    }
 }
 
 export default App;
